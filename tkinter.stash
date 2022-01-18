@@ -1,0 +1,489 @@
+# <#>tkinter<> SpeedSheet
+<b>Find what you need, faster.<>
+
+<m>(Check Imports)<>
+
+
+
+# Summary
+
+tkinter (Tk interface) is Python's interface to Tcl/Tk.
+
+
+
+### Links
+
+Official:
+<l>https://docs.python.org/3/library/tkinter.html<>
+
+Documents:
+<l>https://tkdocs.com/<>
+
+Reference:
+<l>https://tkdocs.com/shipman/<>
+
+
+
+### Install - PIP
+
+<cb>pip3 install tk<>
+
+
+
+### Install - PIP Requirements.txt
+
+Add:
+
+<cb>tk<>
+
+
+
+### Import
+
+<cb>from tkinter import *<>
+@
+@ tkinter
+
+
+
+# Hello World
+
+
+### Hello World - Basic
+
+<cb>from tkinter import Tk
+from tkinter.ttk import Button, Label
+
+<v>root<> = Tk()
+
+<v>label_1<> = Label(<v>root<>, text = '<v>Hello<>')
+<v>label_1<>.pack()
+
+<v>button_1<> = Button(<v>root<>, text = 'Quit', command = <v>root<>.destroy)
+<v>button_1<>.pack()
+
+<v>root<>.mainloop()<>
+
+
+
+### Hellow World - With Input
+
+<cb>from tkinter import Frame, StringVar, Tk, E, N, S, W
+from tkinter.ttk import Button, Entry, Label
+
+class <v>Application<>(Tk):
+
+    def __init__(self, *args, **kwargs):
+
+        super().__init__(*args, **kwargs)
+        self.title("Hello World")
+        self.geometry("600x100")
+        self.resizable(width = False, height = False)
+
+        <v>HelloWorld<>(self).grid(sticky = (E + W + N + S))
+        self.columnconfigure(0, weight = 1)
+
+class <v>HelloWorld<>(Frame):
+
+    def __init__(self, parent, *args, **kwargs):
+
+        super().__init__(parent, *args, **kwargs)
+
+        self.<v>name<> = StringVar()
+        self.<v>hello_message<> = StringVar(value = "Hello!")
+
+        <v>name_label<> = Label(self, text = "<v>Name<>")
+        <v>name_textbox<> = Entry(self, textvariable = self.<v>name<>)
+        <v>name_button<> = Button(self, text = "<v>Set<>", command = self.set_name)
+
+        <v>hello_label<> = Label(self, textvariable = self.<v>hello_message<>)
+
+        <v>name_label<>.grid(row = <v>0<>, column = <v>0<>, sticky = <v>W<>)
+        <v>name_textbox<>.grid(row = <v>0<>, column = <v>1<>, sticky = (<v>E<> + <v>W<>))
+        <v>name_button<>.grid(row = <v>0<>, column = <v>2<>, sticky = <v>E<>)
+        <v>hello_label<>.grid(row = <v>1<>, column = <v>1<>, columnspan = <v>3<>)
+
+        self.columnconfigure(1, weight=1)
+
+    def set_name(self):
+
+        if self.<v>name<>.get():
+            self.<v>hello_message<>.set("Hello " + self.<v>name<>.get())
+        else:
+            self.<v>hello_message<>.set("Hello World")
+
+app = Application()
+app.mainloop()<>
+
+
+# Button
+@
+@ buttons, button()
+
+
+### Button - Create
+
+<cb>= Button(<v>container_1<>, command = <v>function_1<>, text = '<v>Button Text<>')<>
+
+Usage:
+
+<cb>from tkinter.ttk import Button
+
+= Button(<v>container_1<>, command = <v>function_1<>, text = '<v>Button Text<>', state='disabled')<>
+
+Example:
+
+<cb><v>button_exit<> = Button(<v>main_form<>, command = <v>exit_function<>, text = '<v>Exit<>')<>
+@
+@ tkinter.ttk.button()
+@ new, instantiate, define
+
+
+
+### Button - Action - Pass Argument
+
+<cb>button_1 = Button(<v>...<>,
+		command = lambda: <v>action_function<>(<v>arg_1<>, <v>arg_2<>, <v>...<>))<>
+@
+@ parameters, arguments
+
+
+### Button - Enable / Disable
+
+<cb><v>button_1<>.config(state = 'disable')<>
+
+<cb><v>button_1<>.config(state = 'enable')<>
+@
+@ button.config(), .config()
+
+
+### Button - Update Properties
+
+<cb><v>button_1<>.config(<v>properties<>)<>
+@
+@ button.config(), .config()
+
+
+### Button - Update Text
+
+Update Text:
+
+<cb><v>button_1<>.config(text = '<v>New Label<>')<>
+@
+@ button.config(), .config()
+
+
+
+# Canvas
+
+
+### Canvas - Create
+
+<cb>= Canvas()<>
+
+<cb>= Canvas(background = <v>color<>)<>
+@
+@ new, instantiate, define
+
+
+
+### Canvas - Draw Line
+
+<cb><v>canvas_1<>.create_line(<v>x1<>, <v>y1<>, <v>x2<>, <v>y2<>, fill = <v>colour<>)<>
+
+Usage:
+
+<cb><v>canvas_1<>.create_line(<v>x1<>, <v>y1<>, <v>x2<>, <v>y2<>, fill = <v>colour<>, <v>dash<> = <v>dash_type<>)
+<v>canvas_1<>.create_line(<v>x1<>, <v>y1<>, <v>x2<>, <v>y2<>, <v>x3<>, <v>y3<>, <v>...<>, fill = <v>colour<><>
+
+Dash Types:
+
+<in-2><c>dash_len
+gap_len<><>
+
+
+
+# Frame
+
+
+### Frame - Create
+
+<cb>= <m>...<>?<>
+
+
+Container Widget.
+Used to layout components.
+
+
+
+### Frame - Pack Horizontally, Vertically
+
+<cb><v>frame_1<>.pack(<v>...<>)<>
+
+Organizes frame components into horizontal, vertical boxes.
+
+
+
+# Image
+
+
+### Image - Display
+
+<cb>from tkinter.ttk import Label
+
+<v>label_1<> = Label(self, image = <v>image_1<>)
+<v>label_1<>.image = <v>image_1<><>
+
+
+Use a label to display an image.
+@
+@ label()
+
+
+
+### Image - Load
+
+Use Pillow:
+
+<cb>= PhotoImage(Image.open(<v>image_path<>))<>
+
+Full Usage:
+
+<cb>from PIL import Image
+from tkinter import PhotoImage
+
+= PhotoImage(Image.open(<v>image_path<>))<>
+
+
+Loads an image using Pillow and converts it to a tkinter image.
+@
+@ image.open(), .open()
+@ read, load
+
+
+# Label
+@
+@ text
+@ tkinter.ttk.label(), ttk.label(), .label()
+
+
+### Label - Create
+
+<cb>= Label(<v>container_1<>, text='<v>Label Text<>')<>
+
+<cb>from tkinter.ttk import Label
+
+= Label(<v>container_1<>, text='<v>Label Text<>')<>
+@
+@ new, define, insantiate
+
+
+
+# Layouts
+
+
+### Layout - Grid
+
+<cb>.grid()<>
+
+Organizes components into a 2 dimensional grid.
+@
+@ .grid()
+
+
+
+### Layout - Pack
+
+<cb>.pack()<>
+
+Organizes components into horizontal ad vertical boxes.
+@
+@ .pack()
+
+
+
+### Layout - Place
+
+<cb>.place()<>
+
+Places components using absolute positioning.
+@
+@ .place(), x, y, absolute position, coordinates
+
+
+
+# Style
+
+
+### Style - Create
+
+<cb>= Style()<>
+
+Usage:
+
+<cb><v>style_1<> = Style()
+<v>style_1<>.theme_use('<v>default<>')
+<v>style_1<>.configure('<v>style_name<>', <v>property_name<>='<v>value<>')
+
+Component(<v>...<>, style = '<v>style_name<>')<>
+
+
+Example:
+
+<cb>command = <v>function_1<>, text = '<v>Button Text<>' = Style()
+command = <v>function_1<>, text = '<v>Button Text<>'.theme_use('default')
+command = <v>function_1<>, text = '<v>Button Text<>'.configure('Ex1.TFrame', background='white')
+
+Frame(<v>...<>, style='Ex1.TFrame')<>
+
+
+
+# Text Box
+@
+@ text boxs, Entry(), Text()
+
+
+## Text Box - Create
+
+
+
+### Text Box - Single Line
+
+<cb><v>textbox_1<> = Entry(<v>container_1<>)<>
+
+
+
+### Text Box - Multiline
+
+<cb><v>textbox_1<> = Text(<v>container_1<>)<>
+
+
+
+## Text Box - Operations
+
+
+
+### Text Box - Append
+
+<cb><v>textbox_1<>.insert (END, <v>new_text<>)<>
+
+END - A tkinter constant.
+
+
+
+### Text Box - Clear
+
+<cb><v>textbox_1<>.delete (0, END)<>
+
+END - A tkinter constant.
+
+
+
+### Text Box - Insert
+
+<cb><v>textbox_1<>.insert (<v>insert_point<>, <v>new_text<>)<>
+
+
+
+# How To
+
+
+### Any - Disable
+
+<cb><v>component_1<>.config (state='disabled')<>
+
+
+
+### Any - Enable
+
+<cb><v>component_1<>.config (state='normal')<>
+
+
+
+### App - Quit
+
+<cb><v>root<>.destroy()<>
+
+Stops root.tmainloop() and exits the program.
+
+
+Example:
+
+With Button:
+
+<cb>Button(<v>root<>, text = 'Quit', command = <v>root<>.destroy)<>
+@
+@ root.destroy(), .destroy(), button, exit, stop
+
+
+
+### Colour Names
+
+<cb>See: Colour Name Chart in help directory<>
+
+
+
+### Styles
+
+Use ttk imports.
+
+
+
+### Themed Widgets - Import
+
+<cb>from tkinter.ttk import <v>WidgetName<><>
+
+
+
+# Acronyms
+
+
+### Tcl
+Tool Command Language
+
+
+### TK
+Tool Kit
+
+### TTK
+
+
+
+# Glossary
+
+
+### Layout Managers
+Grid, Pack, Place
+
+
+#### Layout Manager - Grid
+Organizes components into a 2 dimensional grid.
+
+
+#### Layout Manager - Pack
+Organizes components into horizontal ad vertical boxes.
+
+
+#### Layout Manager - Place
+Places components using absolute positioning.
+
+
+### Tool Command Language (Tcl)
+A dynamic interpreted language used to talk to the Tk toolkit.
+It is similar to python and commonly embedded into C applications.
+
+Pronounced: tickle
+
+
+### Tool Kit (TK)
+A Tcl package used to create and manipulate GUI widgets.
+
+
+### Themed Tool Kit (ttk)
+Newer version of Tk widgets with improved appearance on different platforms.
+
+
+### Widget Types
+Containers, Children
+
+
