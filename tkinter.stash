@@ -1,17 +1,13 @@
 # <#>tkinter<> SpeedSheet
 <b>Find what you need, faster.<>
 
-<m>(Check Imports)<>
-
-
 
 # Summary
 
 tkinter (Tk interface) is Python's interface to Tcl/Tk.
 
 
-
-### Links
+### Online References
 
 Official:
 <l>https://docs.python.org/3/library/tkinter.html<>
@@ -32,9 +28,25 @@ Reference:
 
 ### Install - PIP Requirements.txt
 
+File Name:
+
+<cb>requirements.txt<>
+
 Add:
 
 <cb>tk<>
+
+
+
+### Install - MacOS / Homebrew
+
+If tk doesn't work on your mac, run this Homebrew command:
+
+<cb>brew install python-tk@3.<v>version<><>
+
+Python 3.10:
+
+<cb>brew install python-tk@3.10<>
 
 
 
@@ -54,19 +66,19 @@ Add:
 <cb>from tkinter import Tk
 from tkinter.ttk import Button, Label
 
-<v>root<> = Tk()
+<v>window<> = Tk()
 
-<v>label_1<> = Label(<v>root<>, text = '<v>Hello<>')
+<v>label_1<> = Label(<v>window<>, text = '<v>Hello<>')
 <v>label_1<>.pack()
 
-<v>button_1<> = Button(<v>root<>, text = 'Quit', command = <v>root<>.destroy)
+<v>button_1<> = Button(<v>window<>, text = 'Quit', command = <v>window<>.destroy)
 <v>button_1<>.pack()
 
-<v>root<>.mainloop()<>
+<v>window<>.mainloop()<>
 
 
 
-### Hellow World - With Input
+### Hello World - With Input
 
 <cb>from tkinter import Frame, StringVar, Tk, E, N, S, W
 from tkinter.ttk import Button, Entry, Label
@@ -116,6 +128,13 @@ app = Application()
 app.mainloop()<>
 
 
+# Component Structure
+
+Application
+Window
+Widget
+
+
 # Button
 @
 @ buttons, button()
@@ -148,6 +167,7 @@ Example:
 @ parameters, arguments
 
 
+
 ### Button - Enable / Disable
 
 <cb><v>button_1<>.config(state = 'disable')<>
@@ -157,11 +177,13 @@ Example:
 @ button.config(), .config()
 
 
+
 ### Button - Update Properties
 
 <cb><v>button_1<>.config(<v>properties<>)<>
 @
 @ button.config(), .config()
+
 
 
 ### Button - Update Text
@@ -181,20 +203,109 @@ Update Text:
 
 <cb>= Canvas()<>
 
-<cb>= Canvas(background = <v>color<>)<>
+Full Usage:
+
+<cb>from tkinter import Canvas
+
+= Canvas(bg = <v>background_color<>)<>
+
+
+Creates a canvas to draw on.
+
+
+Example:
+
+<cb>from tkinter import Tk
+from tkinter import Canvas
+
+<v>window_1<> = Tk()
+
+<v>canvas<> = Canvas(<v>window_1<>)
+<v>canvas<>.configure(bg = '<v>#404040<>')
+<v>canvas<>.pack(fill = 'both', expand = True)
+
+<v>window_1<>.mainloop()<>
 @
-@ new, instantiate, define
+@ new, instantiate, define, bg
+
+
+
+### Canvas - Add Image
+
+<cb>= <v>canvas_1<>.create_image(<v>x<>, <v>y<>, image = <v>image_1<>)<>
+
+<cb>from PIL.ImageTk import PhotoImage
+
+<v>tk_image<> = PhotoImage(<v>pil_image<>)
+= <v>canvas_1<>.create_image(<v>x<>, <v>y<>, image = <v>tk_image<>)<>
+
+
+Adds an image to a canvas.
+
+
+<m>Example Needed<>
+@
+@ .create_image(), imagetk, pil
+
+
+
+### Canvas - Draw Arc
+
+<cb> = <v>canvas_1<>.create_arc(<v>x1<>, <v>y1<>, <v>x2<>, <v>y2<>, style = 'arc', start = <v>start_angle<>, extent = <v>arc_angle<>, fill = <v>color<>)
+
+<m>What is 0˚, What is 90˚. Draws anti-clockwise<>
+
+<m>Needs Example<>
+@
+@ canvas.create_arc(), .create_arc()
+
+
+
+### Canvas - Draw Circle
+
+Use:
+
+<cb>= <v>canvas_1<>.create_oval(<v>x1<>, <v>y1<>, <v>x2<>, <v>y2<>, fill = <v>colour<>)<>
+
+Usage:
+
+<cb>= <v>canvas_1<>.create_oval(<v>x1<>, <v>y1<>, <v>x2<>, <v>y2<>, fill = <v>colour<>)
+= <v>canvas_1<>.create_oval(<v>x1<>, <v>y1<>, <v>x2<>, <v>y2<>, fill = <v>colour<>, outline = <v>color<>, width = <v>width<>)<>
+
+
+To draw a circle, draw an oval with height = width.
+
+
+Example:
+
+<cb>from tkinter import Tk
+from tkinter import Canvas
+
+<v>window_1<> = Tk()
+<v>window_1<>.geometry("<v>256<>x<v>160<>")
+
+<v>canvas<> = Canvas(<v>window_1<>)
+<v>canvas<>.configure(bg = '<v>#404040<>')
+<v>canvas<>.pack(fill = 'both', expand = True)
+
+<v>canvas<>.create_oval(<v>58<>, <v>10<>, <v>198<>, <v>150<>,
+        fill = 'lime', outline = '<v>white<>', width = <v>2<>)
+
+<v>window_1<>.mainloop()<>
+@
+@ canvas.create_val(), .create_val()
 
 
 
 ### Canvas - Draw Line
 
-<cb><v>canvas_1<>.create_line(<v>x1<>, <v>y1<>, <v>x2<>, <v>y2<>, fill = <v>colour<>)<>
+<cb>= <v>canvas_1<>.create_line(<v>x1<>, <v>y1<>, <v>x2<>, <v>y2<>, fill = <v>colour<>)<>
 
 Usage:
 
-<cb><v>canvas_1<>.create_line(<v>x1<>, <v>y1<>, <v>x2<>, <v>y2<>, fill = <v>colour<>, <v>dash<> = <v>dash_type<>)
-<v>canvas_1<>.create_line(<v>x1<>, <v>y1<>, <v>x2<>, <v>y2<>, <v>x3<>, <v>y3<>, <v>...<>, fill = <v>colour<><>
+<cb>= <v>canvas_1<>.create_line(<v>x1<>, <v>y1<>, <v>x2<>, <v>y2<>, fill = <v>colour<>)
+= <v>canvas_1<>.create_line(<v>...<>, width = <v>width<>)
+= <v>canvas_1<>.create_line(<v>...<>, dash = <v>dash_type<>)<>
 
 Dash Types:
 
@@ -202,17 +313,193 @@ Dash Types:
 gap_len<><>
 
 
+Draws a line.
+
+
+Example:
+
+<cb>from tkinter import Tk
+from tkinter import Canvas
+
+<v>window_1<> = Tk()
+<v>window_1<>.geometry("<v>256<>x<v>160<>")
+
+<v>canvas<> = Canvas(<v>window_1<>)
+<v>canvas<>.configure(bg = '<v>#404040<>')
+<v>canvas<>.pack(fill = 'both', expand = True)
+
+<v>canvas<>.create_line(<v>28<>, <v>10<>, <v>228<>, <v>150<>, fill = 'lime', width = <v>2<>)
+
+<v>window_1<>.mainloop()<>
+@
+@ canvas.create_line(), .create_line(), fill, dash
+@ lines
+
+
+
+### Canvas - Draw Oval
+
+<cb>= <v>canvas_1<>.create_oval(<v>x1<>, <v>y1<>, <v>x2<>, <v>y2<>, fill = <v>colour<>)<>
+
+Usage:
+
+<cb>= <v>canvas_1<>.create_oval(<v>x1<>, <v>y1<>, <v>x2<>, <v>y2<>, fill = <v>colour<>)
+= <v>canvas_1<>.create_oval(<v>x1<>, <v>y1<>, <v>x2<>, <v>y2<>, fill = <v>colour<>, outline = <v>color<>, width = <v>width<>)<>
+
+
+Draws a filled oval, ellipse or circle.
+
+
+Example:
+
+<cb>from tkinter import Tk
+from tkinter import Canvas
+
+<v>window_1<> = Tk()
+<v>window_1<>.geometry("<v>256<>x<v>160<>")
+
+<v>canvas<> = Canvas(<v>window_1<>)
+<v>canvas<>.configure(bg = '<v>#404040<>')
+<v>canvas<>.pack(fill = 'both', expand = True)
+
+<v>canvas<>.create_oval(<v>58<>, <v>10<>, <v>198<>, <v>150<>,
+        fill = 'lime', outline = '<v>white<>', width = <v>2<>)
+
+<v>window_1<>.mainloop()<>
+@
+@ .create_oval(), fill
+@ circles, ellipses, ovals
+
+
+
+### Canvas - Draw Point
+
+Use:
+
+<cb>= <v>canvas_1<>.create_oval(<v>x1<>, <v>y1<>, <v>x1<>, <v>y1<>, fill = <v>colour<>, width = 0)<>
+
+Usage:
+
+<cb>= <v>canvas_1<>.create_oval(<v>x1<>, <v>y1<>, <v>x1<>, <v>y1<>, fill = <v>colour<>, width = 0)<>
+
+
+To draw a point, draw an oval with x1 = x2, y1 = y2.
+Set width = 1.
+
+
+Example:
+
+<cb>from tkinter import Tk
+from tkinter import Canvas
+
+<v>window_1<> = Tk()
+<v>window_1<>.geometry("<v>256<>x<v>160<>")
+
+<v>canvas<> = Canvas(<v>window_1<>)
+<v>canvas<>.configure(bg = '<v>#404040<>')
+<v>canvas<>.pack(fill = 'both', expand = True)
+
+<v>canvas<>.create_oval(<v>20<>, <v>10<>, <v>20<>, <v>10<>,
+        fill = '<v>white<>', width = 0)
+
+<v>window_1<>.mainloop()<>
+@
+@ dots
+
+
+
+### Canvas - Draw Polygon
+
+<cb>= <v>canvas_1<>.create_polygon(<v>points<>,
+        fill = <v>color<>, outline = <v>color<>, width = <v>width<>)<>
+@
+@ .create_polygon(), fill, shape
+
+
+
+### Canvas - Draw Text
+
+<cb>= <v>canvas_1<>.create_text(<v>x<>, <v>y<>, '<v>Text<>', fill = <v>color<>, font = ('<v>Helvetica 16 bold<>'))<>
+
+
+Adds text to a canvas.
+
+
+<m>Example Needed<>
+@
+@ string, font
+
+ 
+
+### Canvas - Draw Pie Slice
+
+<cb> = <v>canvas_1<>.create_arc(<v>x1<>, <v>y1<>, <v>x2<>, <v>y2<>, style = 'pieslice', start = <v>start_angle<>, extent = <v>arc_angle<>, fill = <v>color<>)
+
+
+<m>What is 0˚, What is 90˚. Draws anti-clockwise<>
+
+<m>Needs Example<>
+@
+@ pieslice, 'pieslice'
+@ packman, circumference, partial, semicircle, semi-circle
+@ canvas.create_arc(), .create_arc()
+
+
+
+### Canvas Item - Delete
+
+<cb><v>canvas_1<>.delete(<v>item<>)<>
+
+
+Deletes an item from a canvas.
+
+<m>Example Needed<>
+@
+@ .delete(), animation, animate
+
+
+
+### Canvas Item - Move
+
+<cb><v>canvas_1<>.move(<v>item<>, <v>x_increment<>, <v>y_increment<>)<>
+
+
+Moves an item across a canvas.
+
+<m>Example Needed<>
+@
+@ .move(), animation, animate
+
+
 
 # Frame
+
+A container for widgets.
+
+Controls the widgets' layout.
+@
+@ tkinter.frame
 
 
 ### Frame - Create
 
-<cb>= <m>...<>?<>
+<cb>= Frame()<>
 
+Full Usage:
 
-Container Widget.
-Used to layout components.
+<cb>from tkinter import Frame
+
+= Frame()<>
+
+<cb>from tkinter import Frame
+
+class <v>Frame1<>(Frame):
+    def __init__(self, parent, *args, **kwargs):
+        super().__init__(parent, *args, **kwargs)
+
+= <v>Frame1<>()<>
+@
+@ tkinter.frame(), .frame(), (Frame)
 
 
 
@@ -228,6 +515,10 @@ Organizes frame components into horizontal, vertical boxes.
 
 
 ### Image - Display
+
+<cb>= Label(self, image = <v>image_1<>)<>
+
+Usages:
 
 <cb>from tkinter.ttk import Label
 
@@ -251,6 +542,8 @@ Full Usage:
 
 <cb>from PIL import Image
 from tkinter import PhotoImage
+<m>or<>
+from PIL.ImageTk import PhotoImage
 
 = PhotoImage(Image.open(<v>image_path<>))<>
 
@@ -284,9 +577,27 @@ Loads an image using Pillow and converts it to a tkinter image.
 
 ### Layout - Grid
 
-<cb>.grid()<>
+<cb>.grid(row = <v>row_number<>, column = <v>column_number<>)<>
+
+<cb>.grid(row = <v>row_number<>, column = <v>column_number<>)
+.grid(<v>...<>, columnspan = <v>number_of_columns<>)
+.grid(<v>...<>, sticky = <v>direction<>)<>
+
 
 Organizes components into a 2 dimensional grid.
+
+
+<c>sticky<>:
+
+<in><cb>from tkinter import E, N, S, W
+
+= N
+= S
+= E
+= W
+
+= E + W
+= N + E + S + W<><>
 @
 @ .grid()
 
@@ -304,7 +615,7 @@ Organizes components into horizontal ad vertical boxes.
 
 ### Layout - Place
 
-<cb>.place()<>
+<cb>.place(<v>x<>, <v>y<>)<>
 
 Places components using absolute positioning.
 @
@@ -385,7 +696,479 @@ END - A tkinter constant.
 
 
 
+# Widgets
+
+A widget is any displayed ui element or a container for displayed ui elements.
+
+<table><col>Button<><col>Action Button<>
+<col>Canvas<><col>Displays Graphics and Images<>
+<col>CheckButton<><col>Selects a Value<>
+<col>ComboBox<><col>List of Selectable Values<>
+<col>Entry<><col>Text Entry Box<>
+<col>Frame<><col>Widget Container<>
+<col>Label<><col>Displays Text or Graphics<>
+<col>Menu<><col>Provides Menus<>
+<col>Message<><col>Multiline Text Label<>
+<col>RadioButton<><col>Selects From a Number of Value<>
+<col>Scale<><col>Graphical Slider, Selects Within a Range <>
+<col>Scrollbar<><col>Content Scroll Bar<>
+<col>SpinBox<><col>Select From Range of Values<>
+<col>Text<><col>Formatted Multiline Text Entry Box<><>
+
+
+
+# Window
+@
+@ tkinter.TK
+
+
+
+### Window - Basics
+
+
+
+### Window - Create
+
+<cb>= Tk()<>
+
+Full Usage:
+
+<cb>from tkinter import Tk
+
+= Tk()<>
+
+<cb>from tkinter import Tk
+
+class <v>Window1<>(Tk):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)<>
+
+
+Creates an instance of a TK Window.
+
+
+Examples:
+
+<cb>from tkinter import Tk
+
+<v>window_1<> = Tk()
+<v>window_1<>.mainloop()<>
+
+<cb>from tkinter import Tk
+
+class <v>Window1<>(Tk):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+<v>window_1<> = <v>Window1<>()
+<v>window_1<>.mainloop()<>
+@
+@ tkinter.tk(), tk.tk(), (tk)
+@ new, instantiate, define
+
+
+
+### Window - Get Height
+
+<cb>= <v>window_1<>.winfo_height()<>
+
+
+Returns the window height in pixels.
+
+
+Examples:
+
+<cb>from tkinter import Tk
+
+<v>window_1<> = <v>Tk<>()
+<v>window_1<>.geometry("<v>512<>x<v>320<>")
+
+print(<v>window_1<>.winfo_height())
+
+<#># Prints: 320 <><>
+@
+@ .winfo_height(), winfo_height(), height()
+@ size, dimensions
+
+
+
+### Window - Get Width
+
+<cb>= <v>window_1<>.winfo_width()<>
+
+
+Returns the window width in pixels.
+
+
+Examples:
+
+<cb>from tkinter import Tk
+
+<v>window_1<> = <v>Tk<>()
+<v>window_1<>.geometry("<v>512<>x<v>320<>")
+
+print(<v>window_1<>.winfo_width())
+
+<#># Prints: 512 <><>
+@
+@ .winfo_width(), winfo_width(), width()
+@ size, dimensions
+
+
+
+### Window - Get Left Position
+
+<cb>= <v>window_1<>.winfo_x()<>
+
+
+Returns the x (left) value of the window's top left corner.
+
+
+Examples:
+
+<cb>from tkinter import Tk
+
+<v>window_1<> = <v>Tk<>()
+<v>window_1<>.geometry("+<v>512<>+<v>320<>")
+
+print(<v>window_1<>.winfo_x())
+
+<#># Prints: 512 <><>
+@
+@ .winfo_x(), winfo_x(), x
+@ position, dimensions
+
+
+
+### Window - Get Top Position
+
+<cb>= <v>window_1<>.winfo_y()<>
+
+
+Returns the y (top) value of the window's top left corner.
+
+
+Examples:
+
+<cb>from tkinter import Tk
+
+<v>window_1<> = <v>Tk<>()
+<v>window_1<>.geometry("+<v>512<>+<v>320<>")
+
+print(<v>window_1<>.winfo_y())
+
+<#># Prints: 320 <><>
+@
+@ .winfo_y(), winfo_y(), y
+@ position, dimensions
+
+
+
+### Window - Set Position
+
+<cb><v>window_1<>.geometry('+<v>left<>+<v>top<>')<>
+
+
+Sets the window's starting position.
+
+
+Examples:
+
+<cb>from tkinter import Tk
+
+<v>window_1<> = <v>Tk<>()
+<v>window_1<>.geometry("+<v>500<>+<v>300<>")
+<v>window_1<>.mainloop()<>
+
+<cb>from tkinter import Tk
+
+class <v>Window1<>(Tk):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.geometry("+<v>500<>+<v>300<>")
+
+<v>window_1<> = <v>Window1<>()
+<v>window_1<>.mainloop()<>
+@
+@ tkinter.tk.geometry(), tk.tk.geometry(), tk.geometry(), .geometry()
+@ dimensions, length, width, height, top, left, x, y
+
+
+
+### Window - Set Size
+
+<cb><v>window_1<>.geometry('<v>width<>x<v>height<>')<>
+
+
+Sets the window's width and height.
+
+
+Examples:
+
+<cb>from tkinter import Tk
+
+<v>window_1<> = <v>Tk<>()
+<v>window_1<>.geometry("<v>512<>x<v>320<>")
+<v>window_1<>.mainloop()<>
+
+<cb>from tkinter import Tk
+
+class <v>Window1<>(Tk):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.geometry("<v>512<>x<v>320<>")
+
+<v>window_1<> = <v>Window1<>()
+<v>window_1<>.mainloop()<>
+@
+@ tkinter.tk.geometry(), tk.tk.geometry(), tk.geometry(), .geometry()
+@ dimensions, length, width, height
+
+
+
+### Window - Set Size, Position
+
+<cb><v>window_1<>.geometry('<v>width<>x<v>height<>+<v>left<>+<v>top<>')<>
+
+
+Sets the window's size and position.
+
+
+Examples:
+
+<cb>from tkinter import Tk
+
+<v>window_1<> = <v>Tk<>()
+<v>window_1<>.geometry("<v>512<>x<v>320<>+<v>500<>+<v>300<>")
+<v>window_1<>.mainloop()<>
+
+<cb>from tkinter import Tk
+
+class <v>Window1<>(Tk):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.geometry("<v>512<>x<v>320<>+<v>500<>+<v>300<>")
+
+<v>window_1<> = <v>Window1<>()
+<v>window_1<>.mainloop()<>
+@
+@ tkinter.tk.geometry(), tk.tk.geometry(), tk.geometry(), .geometry()
+@ dimensions, length, width, height, top, left, x, y
+
+
+
+### Window - Set Title
+
+<cb><v>window_1<>.title('<v>Window Title<>')<>
+
+
+Sets the window's title.
+
+
+Examples:
+
+<cb>from tkinter import Tk
+
+<v>window_1<> = <v>Tk<>()
+<v>window_1<>.title("Example Window")
+<v>window_1<>.mainloop()<>
+
+<cb>from tkinter import Tk
+
+class <v>Window1<>(Tk):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.title("Example Window")
+
+<v>window_1<> = <v>Window1<>()
+<v>window_1<>.mainloop()<>
+@
+@ tkinter.tk.title(), tk.tk.title(), tk.title(), .title()
+
+
+
+### Window - Show
+
+<cb><v>window_1<>.mainloop()<>
+
+
+Displays the window.
+
+
+Examples:
+
+<cb>from tkinter import Tk
+
+<v>window_1<> = Tk()
+<v>window_1<>.mainloop()<>
+
+<cb>from tkinter import Tk
+
+class <v>Window1<>(Tk):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+<v>window_1<> = <v>Window1<>()
+<v>window_1<>.mainloop()<>
+@
+@ tk.tk.mainloop(), tk.mainloop(), .mainloop()
+
+
+
+# Window Frame
+@
+@ tkinter.frame
+
+
+### Window Frame - Create
+
+
 # How To
+
+
+### Animate With Delete, Redraw
+
+Use:
+
+<cb><v>canvas_1<>.delete(<v>canvas_item<>)
+<v>window_1<>.update()<>
+
+
+Draw the item on the canvas and save it to a variable.
+Remove it by deleting it with <c>canvas.delete()<>.
+
+Redraw the canvas with <c>window.update()<>.
+The canvas tracks what remains and needs to be redrawn.
+
+
+Example:
+
+Draw Rotating Arc:
+
+<cb>from tkinter import Tk
+from tkinter import Canvas
+from time import sleep
+
+<v>INCREMENT<> = 7
+<v>SLICE_ANGLE<> = 60
+<v>SLEEP<> = 0.001
+
+def <v>next<>(<v>previous<>):
+    <v>angle<> = <v>previous<> + <v>INCREMENT<>
+    return <v>angle<> if <v>angle<> \<= 360 else <v>angle<> - 360
+
+class Window1(Tk):
+    def __init__(self, <v>title<>, <v>size<>, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.title(<v>title<>)
+        self.geometry(f'{<v>size<>[0]}x{<v>size<>[1]}')
+        <v>canvas<> = Canvas(self)
+        <v>canvas<>.configure(bg = '#404040')
+        <v>canvas<>.pack(fill = 'both', expand = True)
+        self.<v>canvas<> = <v>canvas<>
+
+<v>window<> = Window1('Animation', (256, 160))
+<v>canvas<> = window.canvas
+
+<v>previous<> = None
+<v>angle<> = 0
+
+while True:
+
+    if <v>previous<>:
+        <v>canvas<>.delete(<v>previous<>)
+
+    <v>angle<> = <v>next<>(<v>angle<>)
+    <v>previous<> = canvas.create_arc(58, 10, 198, 150, style = 'pieslice', start = <v>angle<>, extent = <v>SLICE_ANGLE<>, fill = 'white', outline = None)
+    window.update()
+    sleep(<v>SLEEP<>)<>
+@
+@ canvas.delete(), delete()
+
+
+
+### Animate With Move
+
+Use:
+
+<cb><v>canvas_1<>.move(<v>canvas_item<>, <v>x_increment<>, <v>y_increment<>)
+<v>window_1<>.update()<>
+
+
+Draw the item on the canvas and save it to a variable.
+Move it with <c>canvas.move()<>.
+You must calculate the move co-ordinates relative to the current position. These are NOT absolute values. <s>(why tkinter, why??!!)<>
+Redraw with <c>window.update()<>.
+
+
+Example:
+
+Draw Rotating Arc:
+
+<cb>from tkinter import Tk
+from tkinter import Canvas
+from math import sin, cos, radians
+from time import sleep
+from collections import namedtuple
+
+Point = namedtuple('Point', ['x', 'y'])
+Size = namedtuple('Size', ['width', 'height'])
+
+<v>SCREEN_SIZE<> = Size(256, 160)
+<v>CENTER<> = Point(128, 80)
+<v>RADIUS<> = 50
+<v>WIDTH<> = 5
+<v>INCREMENT<> = 2
+<v>SLEEP<> = 0.001
+
+def calculate_diff(<v>previous<>, <v>next<>):
+    return Point(<v>next<>.x - <v>previous<>.x, <v>next<>.y - <v>previous<>.y)
+
+def calculate_position(<v>center<>, <v>radius<>, <v>angle<>):
+    return Point(
+        <v>center<>.x + sin(radians(<v>angle<>)) * <v>radius<>,
+        <v>center<>.y + cos(radians(<v>angle<>)) * <v>radius<>)
+
+class Window1(Tk):
+    def __init__(self, <v>title<>, <v>size<>, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.title(<v>title<>)
+        self.geometry(f'{<v>size<>.width}x{<v>size<>.height}')
+        <v>canvas<> = Canvas(self)
+        <v>canvas<>.configure(bg = '#404040')
+        <v>canvas<>.pack(fill = 'both', expand = True)
+        self.<v>canvas<> = canvas
+
+<#># Setup Window, Background Graphics:<>
+
+<v>window<> = Window1('Animation', SCREEN_SIZE)
+<v>canvas<> = <v>window<>.<v>canvas<>
+<v>center<> = <v>canvas<>.create_oval(<v>CENTER<>.x - <v>WIDTH<>, <v>CENTER<>.y - <v>WIDTH<>, <v>CENTER<>.x + <v>WIDTH<>, <v>CENTER<>.y + <v>WIDTH<>, fill = 'yellow', width = 0)
+<v>orbit<> = <v>canvas<>.create_oval(<v>CENTER<>.x - <v>RADIUS<>, <v>CENTER<>.y - <v>RADIUS<>, <v>CENTER<>.x + <v>RADIUS<>, <v>CENTER<>.y + <v>RADIUS<>, fill = None, outline = '#C02020', width = 1)
+
+<#># Setup Circle Being Animated:<>
+
+<v>angle<> = 0
+<v>position<> = calculate_position(<v>CENTER<>, <v>RADIUS<>, <v>angle<>)
+<v>circle<> = canvas.create_oval(<v>position<>.x - <v>WIDTH<>, <v>position<>.y - <v>WIDTH<>, <v>position<>.x + <v>WIDTH<>, <v>position<>.y + <v>WIDTH<>, fill = 'lime', width = 0)
+<v>window<>.update()
+
+<#># Animate:<>
+
+while True:
+
+    <v>angle<> += <v>INCREMENT<>
+    <v>next_position<> = calculate_position(<v>CENTER<>, <v>RADIUS<>, <v>angle<>)
+    <v>diff<> = calculate_diff(<v>position<>, <v>next_position<>)
+    <v>position<> = <v>next_position<>
+
+    <v>canvas<>.move(<v>circle<>, <v>diff<>.x, <v>diff<>.y)
+    <v>window<>.update()
+
+    sleep(<v>SLEEP<>)<>
+@
+@ canvas.move(), move()
+
 
 
 ### Any - Disable
@@ -435,6 +1218,20 @@ Use ttk imports.
 
 
 
+# Color
+
+By Hex Color
+
+<cb>= '#FFF'<>
+
+<cb>= '#FFFFFF'<>
+
+By Name:
+
+<cb>= 'Black'<>
+
+
+
 # Acronyms
 
 
@@ -461,7 +1258,7 @@ Organizes components into a 2 dimensional grid.
 
 
 #### Layout Manager - Pack
-Organizes components into horizontal ad vertical boxes.
+Organizes components into horizontal and vertical boxes.
 
 
 #### Layout Manager - Place
@@ -481,6 +1278,12 @@ A Tcl package used to create and manipulate GUI widgets.
 
 ### Themed Tool Kit (ttk)
 Newer version of Tk widgets with improved appearance on different platforms.
+
+
+### Widget
+Any UI element that is displayed or provides user interactions.
+
+Widgets are contained in a window.
 
 
 ### Widget Types
