@@ -658,13 +658,13 @@ Frame(<v>...<>, style='Ex1.TFrame')<>
 
 
 
-### Text Box - Single Line
+### Text Box - Single Line / Entry()
 
 <cb><v>textbox_1<> = Entry(<v>container_1<>)<>
 
 
 
-### Text Box - Multiline
+### Text Box - Multiline / Text()
 
 <cb><v>textbox_1<> = Text(<v>container_1<>)<>
 
