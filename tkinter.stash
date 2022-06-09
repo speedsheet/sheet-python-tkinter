@@ -1,5 +1,55 @@
 # <#>tkinter<> SpeedSheet
-<b>Find what you need, faster.<>
+<b>Find it faster.<>
+
+This is an interactive <b>tkinter<> cheat sheet. tkinter is Python's default library for creating GUI applications and comes with Python. Use the search to instantly get answers.
+
+
+<table><col><b>Basics<>
+
+<*><link "?q=hello+world">Hello World<>
+<link "?q=install">Install<><>
+
+<*><link "?q=common+properties">Common Properties<>
+<link "?q=layouts">Layouts<>
+<link "?q=stringvar">String Variables<>
+<link "?q=quit+app">Quit<><>
+
+<*><link "?q=how+to">How To<><>
+
+<b>Reference<>
+
+<*><link "?q=acronyms">Acronyms<>
+<link "?q=color">Color<>
+<link "?q=online-docs">Online Documents<>
+<link "?q=terms">Terms<><><><col><b>Widgets<>
+
+<*><link "?q=widget-only">Widgets (Summary)<><>
+
+<*><link "?q=button-only">Button<>
+<link "?q=canvas-only">Canvas<>
+<link "?q=image-only">Image<>
+<link "?q=label-only">Label<>
+<link "?q=style-only">Style<>
+<link "?q=text-box-only">Text Box<><>
+
+<*><link "?q=frame-only">Frame<>
+<link "?q=window-only">Window<><><><>
+
+
+## Online Documents
+@
+@ 
+@ online docs, online-docs-only, docs-only
+
+### Official Site
+<l>https://docs.python.org/3/library/tkinter.html<>
+
+### Documents
+<l>https://tkdocs.com/<>
+
+### Reference
+<l>https://tkdocs.com/shipman/<>
+
 
 
 # Summary
@@ -7,22 +57,11 @@
 tkinter (Tk interface) is Python's interface to Tcl/Tk.
 
 
-### Online References
-
-Official:
-<l>https://docs.python.org/3/library/tkinter.html<>
-
-Documents:
-<l>https://tkdocs.com/<>
-
-Reference:
-<l>https://tkdocs.com/shipman/<>
-
-
-
 ### Install - PIP
 
 <cb>pip3 install tk<>
+@
+@ install-only
 
 
 
@@ -35,6 +74,8 @@ File Name:
 Add:
 
 <cb>tk<>
+@
+@ install-only
 
 
 
@@ -47,6 +88,8 @@ If tk doesn't work on your mac, run this Homebrew command:
 Python 3.10:
 
 <cb>brew install python-tk@3.10<>
+@
+@ install-only
 
 
 
@@ -55,6 +98,14 @@ Python 3.10:
 <cb>from tkinter import *<>
 @
 @ tkinter
+
+
+
+### Component Structure
+
+<card>Application
+Window
+Widget<>
 
 
 
@@ -128,16 +179,33 @@ app = Application()
 app.mainloop()<>
 
 
-# Component Structure
+# Widgets
 
-Application
-Window
-Widget
+A widget is any displayed ui element or a container for displayed ui elements.
+
+<table><col>Button<><col>Action Button<>
+<col>Canvas<><col>Displays Graphics and Images<>
+<col>CheckButton<><col>Selects a Value<>
+<col>ComboBox<><col>List of Selectable Values<>
+<col>Entry<><col>Text Entry Box<>
+<col>Frame<><col>Widget Container<>
+<col>Label<><col>Displays Text or Graphics<>
+<col>Menu<><col>Provides Menus<>
+<col>Message<><col>Multiline Text Label<>
+<col>RadioButton<><col>Selects From a Number of Value<>
+<col>Scale<><col>Graphical Slider, Selects Within a Range <>
+<col>Scrollbar<><col>Content Scroll Bar<>
+<col>SpinBox<><col>Select From Range of Values<>
+<col>Text<><col>Formatted Multiline Text Entry Box<><>
+@
+@ widget-only, widgets-only, widget-summary, summary
+
 
 
 # Button
 @
 @ buttons, button()
+@ button-only, buttons-only
 
 
 ### Button - Create
@@ -197,6 +265,8 @@ Update Text:
 
 
 # Canvas
+@
+@ canvas-only
 
 
 ### Canvas - Create
@@ -478,7 +548,9 @@ A container for widgets.
 
 Controls the widgets' layout.
 @
-@ tkinter.frame
+@ tkinter.frame, frames
+@ frame-only, frames-only
+
 
 
 ### Frame - Create
@@ -512,6 +584,9 @@ Organizes frame components into horizontal, vertical boxes.
 
 
 # Image
+@
+@ images
+@ image-only, images-only
 
 
 ### Image - Display
@@ -556,8 +631,9 @@ Loads an image using Pillow and converts it to a tkinter image.
 
 # Label
 @
-@ text
+@ text, labels
 @ tkinter.ttk.label(), ttk.label(), .label()
+@ label-only, labels-only
 
 
 ### Label - Create
@@ -586,6 +662,8 @@ Example:
 
 
 # Layouts
+@
+@ layout-only, layouts-only
 
 
 ### Layout - Grid
@@ -637,6 +715,8 @@ Places components using absolute positioning.
 
 
 # Style
+@
+@ style-only, styles-only
 
 
 ### Style - Create
@@ -665,6 +745,7 @@ Frame(<v>...<>, style='Ex1.TFrame')<>
 # Text Box
 @
 @ text boxs, Entry(), Text()
+@ textbox-only, text-box-only
 
 
 ## Text Box - Create
@@ -747,35 +828,10 @@ Returns the value from a text or entry box.
 
 
 
-# Widgets
-
-A widget is any displayed ui element or a container for displayed ui elements.
-
-<table><col>Button<><col>Action Button<>
-<col>Canvas<><col>Displays Graphics and Images<>
-<col>CheckButton<><col>Selects a Value<>
-<col>ComboBox<><col>List of Selectable Values<>
-<col>Entry<><col>Text Entry Box<>
-<col>Frame<><col>Widget Container<>
-<col>Label<><col>Displays Text or Graphics<>
-<col>Menu<><col>Provides Menus<>
-<col>Message<><col>Multiline Text Label<>
-<col>RadioButton<><col>Selects From a Number of Value<>
-<col>Scale<><col>Graphical Slider, Selects Within a Range <>
-<col>Scrollbar<><col>Content Scroll Bar<>
-<col>SpinBox<><col>Select From Range of Values<>
-<col>Text<><col>Formatted Multiline Text Entry Box<><>
-
-
-
 # Window
 @
 @ tkinter.TK
-
-
-
-### Window - Basics
-
+@ window-only, windows-only
 
 
 ### Window - Create
@@ -1066,17 +1122,10 @@ class <v>Window1<>(Tk):
 
 
 
-# Window Frame
+# Common Properties
 @
-@ tkinter.frame
-
-
-### Window Frame - Create
-
-
-
-# All / Any Component
-
+@ any, all, components
+@ common properties
 
 
 ### Any - Component Disable
@@ -1104,6 +1153,7 @@ class <v>Window1<>(Tk):
 @
 @ string variable
 @ tkinter.stringvar
+@ stringvar-only
 
 
 
@@ -1333,18 +1383,6 @@ With Button:
 
 
 
-### Colour Names
-
-<cb>See: Colour Name Chart in help directory<>
-
-
-
-### Styles
-
-Use ttk imports.
-
-
-
 ### Themed Widgets - Import
 
 <cb>from tkinter.ttk import <v>WidgetName<><>
@@ -1379,7 +1417,9 @@ Tool Kit
 
 
 
-# Glossary
+# Terms
+@
+@ glossary
 
 
 ### Layout Managers

@@ -1,2 +1,4 @@
 .DS_Store
-tkinter-next.stash
+*next.stash
+backups/
+wip/
