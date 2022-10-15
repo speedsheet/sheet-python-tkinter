@@ -7,9 +7,7 @@ This is an interactive <b>tkinter<> cheat sheet. tkinter is Python's default lib
 <table><col><b>Basics<>
 
 <*><link "?q=hello+world">Hello World<>
-<link "?q=install">Install<><>
-
-<*><link "?q=common+properties">Common Properties<>
+<link "?q=install">Install<>
 <link "?q=layouts">Layouts<>
 <link "?q=stringvar">String Variables<>
 <link "?q=quit+app">Quit<><>
@@ -24,6 +22,8 @@ This is an interactive <b>tkinter<> cheat sheet. tkinter is Python's default lib
 <link "?q=terms">Terms<><><><col><b>Widgets<>
 
 <*><link "?q=widget-only">Widgets (Summary)<><>
+
+<*><link "?q=common+properties">Common Properties<><>
 
 <*><link "?q=button-only">Button<>
 <link "?q=canvas-only">Canvas<>
@@ -652,10 +652,14 @@ Loads an image using Pillow and converts it to a tkinter image.
 
 <cb>= Label(<v>...<>, font = ('<v>name<> <v>size<> <v>weight<>')<>
 
+<cb>= Label(<v>...<>, font = ('<v>name<>', <v>size<>, '<v>weight<>')<>
 
-Example:
+
+Examples:
 
 <cb>= Label(<v>...<>, font = ('Helvetica 15 bold')<>
+
+<cb>= Label(<v>...<>, font = ('Courier New', 15, 'bold')<>
 @
 @ font=
 
@@ -1383,6 +1387,37 @@ With Button:
 
 
 
+### Fonts - Get
+
+<cb>= font.families()<>
+
+Usage:
+
+<cb>from tkinter import Tk, font
+root = Tk()
+= font.families()<>
+
+
+Returns a list of all the available fonts.
+
+
+
+### Fonts - List
+
+<cb>from tkinter import Tk, font
+
+root = Tk()
+
+for name in font.families():
+    print(name)<>
+
+
+Prints all the avaliable fonts.
+@
+@ print, show, view, find
+
+
+
 ### Themed Widgets - Import
 
 <cb>from tkinter.ttk import <v>WidgetName<><>
@@ -1414,6 +1449,7 @@ Tool Command Language
 Tool Kit
 
 ### TTK
+Themed Tool Kit
 
 
 
